@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+
+<body>
+    <div class="outer-most">
+        <nav>
+            <div class="nav-left">
+                <ul class="navbar-left">
+                    <li><a href=""><img src="{% static 'images/logo.png' %}" alt=""></a></li>
+                    <li><a href="">Jobs</a></li>
+                    <li><a href="">Post Jobs</a></li>
+                    <li><a href="">About Us</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <a class="btn no-border" href="#">Sign In</a>
+                <a class="btn btn-blue" href="#">Sign Up</a>
+            </div>
+        </nav>
+
+        <section class="first">
+            <div class="first-left">
+                <div class="one">
+                    <h1>Optimize Your Talent <span class="text-blue">Database Intelligently!</span></h1>
+                </div>
+                <div class="two">
+                    <h3 style="font-size: 1.5rem;"><span class="text-blue">Quick & Smart Hiring</span> starts with
+                        Re-usage of the <span class="text-blue">
+                            existing data</span>... Interview without
+                        Calling the NXT Talent.</h3>
+                </div>
+                <div class="three" style="font-family: monospace;">KonnectNXT provides an AI-assisted Technology for
+                    Data Re-utilization that reduces
+                    the cost per hire. KonnectNXT ensures that the companies get Resume of the NXT hire with overall
+                    profile insights & due diligence even before they schedule the first call with the potential NXT
+                    hire.
+                </div>
+                <a class="btn" style="width: 150px; background: rgb(26, 91, 255); outline: none; color: white; border: none; border-radius: 10px;" href="apply">Apply For A Job</a>
+
+            </div>
+            <div class="first-right">
+                <img src="{% static 'images/top.png' %}" alt="">
+            </div>
+        </section>
+        <section class="two" style="display: flex; justify-content: center; align-items: center; padding: 30px; padding-inline: 20px; margin: auto;">
+            <div class="two-left" style="display: flex; width: 100%; flex-direction: column; gap: 30px; margin-top: 30px;">
+                <h2>Learn more about how KonnectNXT helps Companies...</h2>
+                <p>Watch our demo or Schedule 1:1 Demo</p>
+                <a class="btn" style="width: 150px; background: rgb(26, 91, 255); outline: none; color: white; border: none; border-radius: 10px;" href="#">Request a Demo</a>
+            </div>
+            <div class="two-right">
+                <img src="{% static 'images/laptop.png' %}" style="width: 100%; float: right;" alt="">
+            </div>
+        </section>
+
+        <section class="three">
+            <table style="width: 100%;padding: 20px;">
+                <tr style="padding: 30px;">
+                    <td colspan="2" style="text-align: center; font-weight: bolder; font-size: 2rem; padding: 10px; margin-bottom: 40px;">Why Konnect <span style="background-color: rgb(88, 88, 249); padding: 5px; color: white; width: 75px; border-radius: 10px;">NXT</span>?</td>
+                </tr>
+                <tr>
+                    <td><img src="{% static 'images/img1.png' %}" style="width: 100%;" alt=""></td>
+                    <td style="display: flex; flex-direction: column; gap: 30px; padding: 20px;">
+                        <h2>KN Talent</h2>
+                        <h3>Auto Talent Pipeline</h3>
+                        <div>KonnectNXT automates initial screening process and provides Resume of the NXT hire with overall profile insights & due diligence even before they schedule the first call with the potential NXT hire.</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="display: flex; flex-direction: column; gap: 30px; padding: 20px;">
+                        <h2>KN Refine & Refresh</h2>
+                        <h3>Data Re-utilization</h3>
+                        <div>KonnectNXT uses AI-Assisted Technology to Refresh your existing database so that it can be Reused to recruit NXT Talent.</div>
+                    </td>
+                    <td><img src="{% static 'images/img2.png' %}" style="width: 100%; aspect-ratio: 16/9;" alt="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="{% static 'images/img3.png' %}" style="width: 100%; aspect-ratio: 16/9;" alt="">
+                    </td>
+                    <td style="display: flex; flex-direction: column; gap: 30px; padding: 20px;">
+                        <h2>KN Recruit</h2>
+                        <h3>Search & Identify Relevant Talent Automatically</h3>
+                        <div>KonnectNXT intelligently searches from uploaded data, does consistency check, and performs due diligence to check the relevancy and legitimacy before it throws profiles in front of the Recruiters.</div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</body>
+
+</html>

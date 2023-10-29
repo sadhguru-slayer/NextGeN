@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+
+<body>
+    <div class="outer-most">
+        <div class="left">
+            <div class="profile-card">
+
+                <img src="{% static 'images\man (1).png' %}" alt="">
+                <h1 class="blue">{{json_data.first_name}}&nbsp;{{json_data.last_name}}</h1>
+                <p class="blue">{{json_data.sub_title|slice:20}}</p>
+                <p class="blue">Student Tribe a.k.a St</p>
+                <p>
+                    <i class="material-icons">place</i> <span class="blue">{{ json_data.location.city }}</span>
+                </p>
+            </div>
+            <div class="socials">
+                <ul>
+                    <li><img class="social-icons" src="{% static 'images/github.png' %}" alt=""></li>
+                    <li><img class="social-icons" src="{% static 'images/linkedin.png' %}" alt=""></li>
+                    <li><img class="social-icons" src="{% static 'images/instagram.png' %}" alt=""></li>
+                    <li><img class="social-icons" src="{% static 'images/twitter.png' %}" alt=""></li>
+                </ul>
+            </div>
+            <div class="bio">
+                {{json_data.summary}}
+            </div>
+            <div class="bio-data">
+                <table border="0">
+                    <tr>
+                        <td>E-Mail</td>
+                        <td class="text-left blue">farhanahmed@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td class="text-left blue">1234567890</td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td class="text-left">2/4/2003</td>
+                    </tr>
+                    <tr>
+                        <td>Do you have valid passport</td>
+                        <td class="text-left">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Do you have a visa</td>
+                        <td class="text-left">Yes</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <div class="right">
+            <h1>Overview</h1>
+            <hr>
+            <div style="display: flex;flex-direction: column;gap: 1rem;">
+                <div class="overview">
+                    <div class="overview-left">
+                        <div class="over-profile">
+                            <h1 class="blue">{{json_data.first_name}}&nbsp;{{json_data.last_name}}</h1>
+                            <p>{{json_data.sub_title}}</p>
+                            <p>{{user.email}}</p> <br>
+                            <div>
+                                <h1>Skills</h1>
+                                <ul class="skill-list" style="display:flex;flex-wrap: wrap;">
+                                    {% for skill in json_data.skills|slice:":6" %}
+                                    <li style="width: auto;padding: 10px;">{{ skill }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overview-right">
+                        <h1>Summary</h1><br>
+                        <p>{{json_data.summary}}</p>
+                        <button class="summary-btn">Visit Linkedin</button>
+                    </div>
+                </div>
+                <div class="linkedin-endors" style="display: flex;gap: 1rem;flex-direction: column;">
+                    <h1>
+                        Certifications
+                    </h1>
+                    <hr>
+                    <div style="display: flex;gap: 1rem;flex-wrap: wrap;">
+                        {% for i in json_data.certifications %}
+
+                        <div class="company_name"
+                            style="padding: 1rem;box-shadow: 1px 1px 4px black;border-radius: 12px;background-color: rgb(203, 203, 255,0.4);">
+                            <h2 style="color: blue;text-decoration: underline black;">
+                                {{i.company.name}}
+                            </h2>
+                            <h3>{{i.name}}</h3>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="linkedin-endors" style="display: flex;gap: 1rem;flex-direction: column;">
+                    <h1>
+                        Work Experiences
+                    </h1>
+                    <hr>
+                    <div style="display: flex;gap: 1rem;flex-wrap: wrap;">
+                        {% for i in json_data.volunteer_experiences %}
+
+                        <div class="company_name"
+                            style="padding: 1rem;box-shadow: 1px 1px 4px black;border-radius: 12px;background-color: rgb(203, 203, 255,0.4);">
+                            <h2 style="color: blue;text-decoration: underline black;">
+                                {{i.company.name}}
+                            </h2>
+                            <h3>{{i.role}}</h3>
+                            <p>{{i.description}}</p>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="linkedin-endors" style="display: flex;gap: 1rem;flex-direction: column;">
+                    <h1>
+                        Position Group
+                    </h1>
+                    <hr>
+                    <div style="display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(40%, 2fr));
+                grid-gap: 10px;">
+                        {% for i in json_data.position_groups %}
+
+                        <div class="company_name"
+                            style="padding: 1rem;box-shadow: 1px 1px 4px black;border-radius: 12px;background-color: rgb(203, 203, 255,0.4);">
+                            <h2 style="color: blue;text-decoration: underline black; margin: 1rem;">
+                                {{i.company.name}}
+                            </h2>
+                            <div style="padding: 1rem;">
+                                {% for j in i.profile_positions %}
+                                <div style="display: flex;justify-content: space-between;">
+                                    <div>
+                                        <h3>{{j.title}}</h3>
+                                        <h5>{{j.employment_type}}</h5>
+                                    </div>
+                                    <div>
+                                        {{j.date.start.month}}/{{j.date.start.year}}
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                            <p>{{i.description}}</p>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="linkedin-endors" style="display: flex;gap: 1rem;flex-direction: column;">
+                    <h1>
+                        Projects
+                    </h1>
+                    <hr>
+                    <div style="display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(40%, 2fr));
+                grid-gap: 10px;">
+                        {% for i in json_data.projects %}
+
+                        <div class="company_name"
+                            style="padding: 1rem;box-shadow: 1px 1px 4px black;border-radius: 12px;background-color: rgb(203, 203, 255,0.4);">
+                            <h2 style="color: blue;text-decoration: underline black; margin: 1rem;">
+                                {{i.title}}
+                            </h2>
+                            <h5>{{i.description}}</h5>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+    <h1 style="margin: 10px 0px;">GitHub Repositories</h1>
+    
+    <!-- <label for="username">Enter a GitHub username:</label> -->
+    <input type="text" id="username" hidden value="{{git_username}}">
+    <!-- <button onclick="fetchRepositories()">Fetch Repositories</button> -->
+    
+    <!-- <div id="repositories"> -->
+        <!-- <link rel="stylesheet" type="text/css" href="GitHub.css"> -->
+        
+        <div id="results"></div>
+    <!-- </div> -->
+
+    
+
+        </div>
+    </div>
+
+    <script>
+        function fetchRepositories() {
+            console.log("Hiiiiiiiiiii")
+            var username = document.getElementById("username").value;
+            console.log(username)
+            var url = `https://api.github.com/users/${username}/repos`;
+            console.log(url)
+
+            fetch(url)
+                .then((response) => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        throw new Error("Failed to fetch data. Status code: ${response.status}");
+                    }
+                })
+                .then((repos) => {
+                    const resultsDiv = document.getElementById("results");
+                    resultsDiv.innerHTML = '';
+
+                    if (repos.length > 0) {
+                        const list = document.createElement("ul");
+                        list.style="display: grid;grid-template-columns: repeat(auto-fill, minmax(40%, 2fr));grid-gap:1rem;"
+                        repos.forEach((repo) => {
+                            const listItem = document.createElement("li");
+                            listItem.style="padding: 1rem;box-shadow: 1px 1px 4px black;border-radius: 12px;background-color: rgb(203, 203, 255,0.4);list-style: none;"
+                            const link = document.createElement("a");
+                            link.style="text-decoration:none;font-size:large;font-weight:bold"
+                            link.href = repo.html_url;
+                            link.textContent = repo.name;
+                            link.target = "_blank"; // Open link in a new tab
+                            listItem.appendChild(link);
+                            list.appendChild(listItem);
+                        });
+                        resultsDiv.appendChild(list);
+                    } else {
+                        resultsDiv.textContent = "No repositories found for ${username}.";
+                    }
+                })
+                .catch((error) => {
+                    console.error(error.message);
+                });
+        }
+
+        fetchRepositories();
+    </script>
+</body>
+
+</html>
